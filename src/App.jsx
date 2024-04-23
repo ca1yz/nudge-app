@@ -1,29 +1,34 @@
 // src/App.jsx
 import './App.css'
-import Permissions from "./permission/permission_screen";
+import Permissions from './components/permission/permission_screen';
+import { DeviceFrameset } from 'react-device-frameset';
+import 'react-device-frameset/styles/marvel-devices.min.css'
+
 
 function App() {
 
+  // phone frame settings
+  const scale = 0.9;
+  const width = 320;
+  const height = 500;
+
   return (
     <>
-      <div className="flex flex-col md:flex-row items-center gap-6 md:justify-center w-full md:w-auto">
-        <div className="flex flex-col">
+    <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
+        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
           <Permissions nudgeType={1}/>
-        </div>
-
-        <div className="flex flex-col">
+        </DeviceFrameset>
+        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
           <Permissions nudgeType={2}/>
-        </div>
-
-        <div className="flex flex-col">
+        </DeviceFrameset>
+        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
           <Permissions nudgeType={3}/>
-        </div>
-
-        <div className="flex flex-col">
+        </DeviceFrameset>
+        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
           <Permissions nudgeType={4}/>
-        </div>
-
-      </div>
+        </DeviceFrameset>
+    </div>
+    
     </>
   )
 }

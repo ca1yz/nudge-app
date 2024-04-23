@@ -1,0 +1,12 @@
+.screen_container {
+    width: 320px; /* typical phone width */
+    height: 500px; /* typical phone height */
+    margin: auto; /* centers the component on the page */
+    /* border: 1px solid #ccc; */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* subtle shadow for depth */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ensures spacing around items */
+  }
+  
+  
