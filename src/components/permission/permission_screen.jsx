@@ -3,7 +3,7 @@ import React from 'react';
 import ToggleSwitch from './toggle_switch';
 import Choice from './choice';
 import Screen from '../screen';
-import StatusBar from '../status_bar';
+import { ControlType } from '../nudges';
 import * as SolarIconSet from "solar-icon-set";
 
 
@@ -11,9 +11,9 @@ const PermissionItem = ({ name, IconComponent, controlType }) => {
 
     const renderControl = () => {
         switch (controlType) {
-            case 'choice':
+            case 'no-nudge':
                 return <Choice name={name} />;
-            case 'toggle':
+            case 'nudge':
                 return <ToggleSwitch id={name+controlType} name={name} defaultChecked={false} controlType={controlType} />;
             case 'visible-nudge':
                 return <ToggleSwitch id={name+controlType} name={name} defaultChecked={false} controlType={controlType} />;
@@ -36,21 +36,6 @@ const PermissionItem = ({ name, IconComponent, controlType }) => {
             </div>
         </div>
     )
-}
-
-export const ControlType = ( {typeNumber} ) => {
-    switch (typeNumber) {
-        case 1:
-            return 'choice';
-        case 2:
-            return 'toggle';
-        case 3:
-            return 'visible-nudge';
-        case 4:
-            return 'understandable-nudge';
-        default:
-            return 'choice';
-    }
 }
 
 const Permissions = ( {nudgeType} ) => {
