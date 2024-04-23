@@ -1,0 +1,23 @@
+import React from "react";
+import { DeviceFrameset } from 'react-device-frameset';
+import 'react-device-frameset/styles/marvel-devices.min.css'
+
+
+const Phone = ({ children }) => {
+    // phone frame settings
+    const scale = 0.9;
+    const width = 320;
+    const height = 500;
+    const device = 'iPhone 8';
+    const color = 'gold';
+
+    return (
+        <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
+            <DeviceFrameset device={device} color={color} zoom={scale} width={width} height={height}>
+                {children}
+            </DeviceFrameset>
+        </div>
+    );
+}
+
+export default Phone;

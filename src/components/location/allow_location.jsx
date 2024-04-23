@@ -4,6 +4,7 @@ import Screen from "../screen";
 import { ControlType } from "../nudges";
 import map_img from "../../assets/1d77d8ec-bc4b-468c-9e24-1b840cccacef.jpg"
 import * as SolarIconSet from "solar-icon-set";
+import { ShieldCheckIcon } from '@heroicons/react/24/solid';
 
 
 const AllowLocation = ( {nudgeType} ) => {
@@ -31,7 +32,7 @@ const AllowLocation = ( {nudgeType} ) => {
         // swap the first and second buttons to put "Never" first
         [buttons[0], buttons[1]] = [buttons[1], buttons[0]];
     }
-    const SafeIcon = () => <SolarIconSet.ShieldCheck color="#1c59c9" size={16} iconStyle="BoldDuotone" />;
+    const SafeIcon = () => <SolarIconSet.ShieldCheck color="#1c59c9" size={16} iconStyle="BoldDuotone" />; // <ShieldCheckIcon className="h-5 w-5 text-blue-500" />
 
     return (
         <Screen>

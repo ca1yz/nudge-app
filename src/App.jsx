@@ -4,6 +4,8 @@ import Permissions from './components/permission/permission_screen';
 import AllowLocation from './components/location/allow_location';
 import { DeviceFrameset } from 'react-device-frameset';
 import 'react-device-frameset/styles/marvel-devices.min.css'
+import CloudChoice from './components/cloud_provider/provider';
+import Phone from './components/phone';
 
 function App() {
 
@@ -16,34 +18,49 @@ function App() {
   return (
     <>
     <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
-        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
-          <AllowLocation nudgeType={1} />
-        </DeviceFrameset>
-        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
-          <AllowLocation nudgeType={2} />
-        </DeviceFrameset>
-        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
-          <AllowLocation nudgeType={3} />
-        </DeviceFrameset>
-        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
-          <AllowLocation nudgeType={4} />
-        </DeviceFrameset>
+      <Phone>
+        <Permissions nudgeType={1} />
+      </Phone>
+      <Phone>
+        <Permissions nudgeType={2} />
+      </Phone>
+      <Phone>
+        <Permissions nudgeType={3} />
+      </Phone>
+      <Phone>
+        <Permissions nudgeType={4} />
+      </Phone>
     </div>
+
     <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
-        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
-          <Permissions nudgeType={1}/>
-        </DeviceFrameset>
-        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
-          <Permissions nudgeType={2}/>
-        </DeviceFrameset>
-        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
-          <Permissions nudgeType={3}/>
-        </DeviceFrameset>
-        <DeviceFrameset device="iPhone 8" color="gold" zoom={scale} width={width} height={height}>
-          <Permissions nudgeType={4}/>
-        </DeviceFrameset>
+      <Phone>
+        <AllowLocation nudgeType={1} />
+      </Phone>
+      <Phone>
+        <AllowLocation nudgeType={2} />
+      </Phone>
+      <Phone>
+        <AllowLocation nudgeType={3} />
+      </Phone>
+      <Phone>
+        <AllowLocation nudgeType={4} />
+      </Phone>
     </div>
-    
+
+    <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
+      <Phone>
+        <CloudChoice nudgeType={1}/>
+      </Phone>
+      <Phone>
+        <CloudChoice nudgeType={2}/>
+      </Phone>
+      <Phone>
+        <CloudChoice nudgeType={3}/>
+      </Phone>
+      <Phone>
+        <CloudChoice nudgeType={4}/>
+      </Phone>
+    </div>
     </>
   )
 }
