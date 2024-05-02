@@ -12,7 +12,7 @@ const Phone = ({ children }) => {
     const color = 'gold';
 
     return (
-        <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
+        <div className="select-none flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
             <DeviceFrameset device={device} color={color} zoom={scale} width={width} height={height}>
                 {children}
             </DeviceFrameset>

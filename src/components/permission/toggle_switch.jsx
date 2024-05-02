@@ -40,7 +40,7 @@ const ToggleSwitch = ({ id, name, defaultChecked, controlType }) => {
           className={`toggle-label block w-11 h-6 bg-gray-300 rounded-full cursor-pointer before:absolute before:left-0 before:w-6 before:h-6 before:bg-white before:rounded-full before:shadow before:transition-all before:duration-200 before:border-gray-300 ${isChecked ? 'before:translate-x-full bg-green-500' : ''}`}
         ></label>
       </div>
-      <span className={`text-xs text-gray-500 text-opacity-60  mr-2 ${ textVisible ? 'mt-1': 'invisible h-2'}`}>default</span>
+      <span className={`text-xs text-gray-700 text-opacity-100  mr-2 ${ textVisible ? 'mt-1': 'invisible h-2'}`}>default</span>
     </div>
   );
 };

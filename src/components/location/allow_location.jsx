@@ -38,29 +38,36 @@ const AllowLocation = ( {nudgeType} ) => {
         <Screen>
             <div className="flex flex-col justify-between h-full text-center">
 
-                <div className="flex flex-col items-center pt-6">
-                    <h1 className="w-64 text-xl font-bold text-gray-700">Allow location tracking by this App?</h1>
+                <div className="flex flex-col items-center translate-y-0">
+                    <h1 className="w-64 text-xl h-16 translate-y-3 font-bold text-gray-700">Allow location tracking by this app?</h1>
                     <img src={map_img} alt="map" className="w-40 h-40 mt-2" />
                     {/* img with free license https://www.freepik.com/free-vector/grey-map-with-location-pin_154661093.htm */}
                 </div>
 
-                    <div className="flex flex-col items-center text-sm gap-1 mb-6">
-                        <button id={buttons[0]?.id} className="w-36 h-9 bg-gray-200 rounded text-gray-700 hover:bg-gray-300">
-                            {isUnderstandableNudge ? <SafeIcon></SafeIcon> : ''} {buttons[0]?.text}
-                        </button>
-                        {isVisibleNudge ?
-                        <div className="h-16 text-xs text-gray-500 text-opacity-60">
-                            {isUnderstandableNudge ? "Not letting applications track your location helps preserve your digital privacy." : ''}
-                        </div>
-                        : ''}
-                        <button id={buttons[1]?.id} className="w-36 h-9 bg-gray-200 rounded text-gray-700 hover:bg-gray-300">
-                            {buttons[1]?.text}
-                        </button>
-                        <button id={buttons[2]?.id} className="w-36 h-9 bg-gray-200 rounded text-gray-700 hover:bg-gray-300">
-                            {buttons[2]?.text}
-                        </button>
-                    </div>
+                {/* <span className="h-3"></span> */}
 
+                <div className="flex flex-col items-center text-sm gap-1 mb-6">
+                    <button id={buttons[0]?.id} className="w-36 h-9 bg-gray-200 rounded text-gray-700 hover:bg-gray-300">
+                        {isUnderstandableNudge ? <SafeIcon></SafeIcon> : ''} {buttons[0]?.text}
+                    </button>
+                    {isVisibleNudge ?
+                    <div className="h-16 text-xs text-gray-500 text-opacity-100">
+                        {isUnderstandableNudge ? "Not letting applications track your location helps preserve your digital privacy." : ''}
+                    </div>
+                    : ''}
+                    <button id={buttons[1]?.id} className="w-36 h-9 bg-gray-200 rounded text-gray-700 hover:bg-gray-300">
+                        {buttons[1]?.text}
+                    </button>
+                    <button id={buttons[2]?.id} className="w-36 h-9 bg-gray-200 rounded text-gray-700 hover:bg-gray-300">
+                        {buttons[2]?.text}
+                    </button>
+                </div>
+                
+                <div className="-translate-y-0.5">
+                    <button className="w-16 -translate-y-0.5">
+                        <h1 className="text-xs text-gray-600">Next</h1>
+                    </button>
+                </div>
             </div>
         </Screen>
     );

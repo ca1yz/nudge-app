@@ -59,7 +59,7 @@ const Permissions = ( {nudgeType} ) => {
                 <PermissionItem name="Motion" IconComponent={MotionIcon} controlType={ctrl} />
             </div>
             <div className=' h-12'> 
-                <p className="py-1 text-xs text-gray-600 text-opacity-65 text-left">
+                <p className="py-1 text-xs text-gray-600 text-opacity-100 text-left">
                     { ctrl === 'understandable-nudge' ?
                     'Permissions are turned off by default to support you in making privacy-preserving choices'
                     : ''}
@@ -67,9 +67,9 @@ const Permissions = ( {nudgeType} ) => {
             </div>
 
         </div>
-        <div className="px-6 py-4 w-full bg-gray-100 text-center">
-            <button className="px-4 py-2 bg-gray-200 rounded text-gray-700 hover:bg-gray-300">
-            Next
+        <div className="">
+            <button className="w-16 -translate-y-0.5">
+                <h1 className="text-xs text-gray-600">Next</h1>
             </button>
         </div>
     </Screen>

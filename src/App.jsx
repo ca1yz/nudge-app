@@ -6,6 +6,8 @@ import { DeviceFrameset } from 'react-device-frameset';
 import 'react-device-frameset/styles/marvel-devices.min.css'
 import CloudChoice from './components/cloud_provider/provider';
 import Phone from './components/phone';
+import FlipCard from './components/cookies/cookies_button';
+import CookiesPermission from './components/cookies/cookies_permission';
 
 function App() {
 
@@ -17,6 +19,22 @@ function App() {
 
   return (
     <>
+
+    <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
+      <Phone>
+        <CookiesPermission nudgeType={1} />
+      </Phone>
+      <Phone>
+        <CookiesPermission nudgeType={2} />
+      </Phone>
+      <Phone>
+        <CookiesPermission nudgeType={3} />
+      </Phone>
+      <Phone>
+        <CookiesPermission nudgeType={4} />
+      </Phone>
+    </div>
+
     <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
       <Phone>
         <Permissions nudgeType={1} />
