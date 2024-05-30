@@ -2,16 +2,16 @@
 import React, { useState } from 'react';
 import { ShieldCheckIcon, EyeIcon } from '@heroicons/react/24/solid';
 
-const ToggleSwitch = ({ id, name, defaultChecked, controlType }) => {
+const ToggleSwitch = ({ id, name, defaultChecked, controlType, onSelectionChange }) => {
   // State to manage the checked status
   const [isChecked, setIsChecked] = useState(defaultChecked);
 
   // Handle change event for checkbox
   const handleChange = () => {
-    setIsChecked(!isChecked);
+    const newChecked = !isChecked;
+    setIsChecked(newChecked);
+    onSelectionChange(name, newChecked);
   };
-
-  const uniqueId = `toggle-switch-${id}`;
 
   const textVisible = controlType === 'visible-nudge' || controlType === 'understandable-nudge';
 

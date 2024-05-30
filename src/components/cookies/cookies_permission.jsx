@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Screen from "../screen";
 import { ControlType } from "../nudges";
 import map_img from "../../assets/1d77d8ec-bc4b-468c-9e24-1b840cccacef.jpg"
@@ -8,7 +8,7 @@ import { ShieldCheckIcon } from '@heroicons/react/24/solid';
 import CookiesButton from "./cookies_button";
 
 
-const CookiesPermission = ( {nudgeType} ) => {
+const CookiesPermission = ( {name = CookiesPermission, nudgeType, onNext} ) => {
 
     let ctrl = ControlType({typeNumber: nudgeType});
     var explain = ctrl !== 'no-nudge';
@@ -25,23 +25,26 @@ const CookiesPermission = ( {nudgeType} ) => {
 
                 <div className=" -translate-y-1">
                     <div className="flex flex-col min-h-64 h-full justify-center text-sm gap-y-1">
-                        <CookiesButton id={ctrl} explain={explain} safe={isUnderstandableNudge} flipped={isVisibleNudge} 
-                        frontText="No Additional" backText="This means xyz... and is the most privacy-friendly option. " />
+                        <CookiesButton id={name + ctrl} explain={explain} safe={isUnderstandableNudge} flipped={isVisibleNudge} 
+                        frontText="Only Necessary" backText="This means xyz... and is the most privacy-friendly option. " />
 
-                        <CookiesButton id={ctrl} explain={explain} 
+                        <CookiesButton id={name + ctrl} explain={explain} 
                         frontText="Functionality" backText="allows cookies that enhance the usability and performance of the website by enabling personalized features like language preferences and shopping carts." />
 
-                        <CookiesButton id={ctrl} explain={explain} 
+                        <CookiesButton id={name + ctrl} explain={explain} 
                         frontText="Analytics" backText="Allow cookies that help us understand how visitors interact with the website by collecting and reporting information anonymously." />
 
-                        <CookiesButton id={ctrl} explain={explain} 
+                        <CookiesButton id={name + ctrl} explain={explain} 
                         frontText="Marketing" backText="These cookies may track users across websites and collect information to provide customized ads." />
                     </div>
                 </div>
 
                 <div className="">
-                    <button className="w-16 -translate-y-0.5">
-                        <h1 className="text-xs text-gray-600">Next</h1>
+                    <button className="w-16 -translate-y-0.5"
+                     onClick={onNext}>
+                        <div className="flex justify-center w-full">
+                            <p className="text-xs text-gray-600">Next</p>
+                        </div>
                     </button>
                 </div>
 

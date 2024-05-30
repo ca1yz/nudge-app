@@ -9,8 +9,12 @@ import { ShieldCheckIcon } from '@heroicons/react/24/solid';
 const CookiesButton = ( {id, frontText, backText, safe=false, flipped=false, explain=true} ) => {
     const [isFlipped, setIsFlipped] = useState((flipped || safe) && explain);
     const [isSelected, setIsSelected] = useState((flipped || safe));
+    
+    useEffect(() => {
+      localStorage.setItem('vars_Cookies_' + frontText, isSelected);
+    }, [isSelected]);
 
-    const handleRightClick = () => {
+    const handleClick = () => {
         setIsSelected(!isSelected);
         if (explain) {
             setIsFlipped(!isFlipped);
@@ -19,14 +23,14 @@ const CookiesButton = ( {id, frontText, backText, safe=false, flipped=false, exp
 
     // Apply Tailwind classes dynamically based on the flipped state
     const containerClasses = `focus:outline-none transition-all duration-700 ease-in-out ${
-      isFlipped ? 'w-64 h-20' : 'w-36 h-9'
+      isFlipped ? 'w-64 h-20' : 'w-40 h-9'
     } max-h-auto text-xs text-gray-700 bg-gray-300 rounded shadow-sm overflow-hidden mx-auto flex justify-center items-center ${
         isSelected ? 'border-0 opacity-100' : 'border-0 opacity-50'
       }`;
   
     return (
         <>
-          <button id={id + frontText} className={containerClasses} onClick={() => handleRightClick()}>
+          <button id={id} className={containerClasses} onClick={() => handleClick()}>
             <Transition
               show={isFlipped}
               enter="transform transition duration-[400ms] ease-out"
@@ -38,7 +42,7 @@ const CookiesButton = ( {id, frontText, backText, safe=false, flipped=false, exp
             >
                 { isFlipped && <div className='w-64 max-h-16'>
                     <>
-                        <h2 className='text-base'> {safe && <ShieldCheckIcon className="h-4 w-4 inline text-blue-500" />} {frontText} </h2>
+                        <h2 className='text-base'> {safe && <ShieldCheckIcon className="h-5 w-5 inline text-blue-500" />} {frontText} </h2>
                         <p> {backText} </p>
                     </>
                 </div>}
@@ -55,7 +59,7 @@ const CookiesButton = ( {id, frontText, backText, safe=false, flipped=false, exp
             >
             
                 {!isFlipped && <div className='w-full h-full'>
-                     <h2 className='text-sm'> {frontText} </h2>
+                     <h2 className='text-sm'> {safe && <ShieldCheckIcon className="h-4 w-4 inline text-blue-500" />} {frontText} </h2>
                 </div>}
               
               

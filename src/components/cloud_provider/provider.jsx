@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import BubbleMessage from '../function_pages/bubble_message';
 import Screen from '../screen';
 import { ControlType } from '../nudges';
 import ProviderChoice from './provider_choice';
@@ -15,14 +17,24 @@ const data = [
   { provider: 'Provider C', downloads: 180, isPopular: false },
 ];
 
-const CloudProvider = ({ nudgeType }) => {
+const CloudProvider = ({ nudgeType, onNext }) => {
   const maxValue = Math.max(...data.map(o => o.downloads));
   const [selected, setSelected] = useState('');
   const [availableHeight, setAvailableHeight] = useState(0);
   const titleRef = useRef(null);
   const choicesRef = useRef(null);
   const containerRef = useRef(null);
+  // inform user to select a provider
+  const [showMessage, setShowMessage] = useState(false);
 
+  const handleNext = () => {
+    if (selected === '') {
+      setShowMessage(true);
+      setTimeout(() => setShowMessage(false), 1000);
+    } else {
+      onNext();
+    }
+  };
 
   useEffect(() => {
     if (containerRef.current && titleRef.current && choicesRef.current) {
@@ -47,8 +59,9 @@ const CloudProvider = ({ nudgeType }) => {
     { name: 'Provider C', icon: <img src={ProviderC} draggable="false" className="h-10 w-10" /> },
   ];
 
-  const handleSelection = (choice) => {
-    setSelected(choice);
+  const handleSelection = (providerName) => {
+    setSelected(providerName);
+    localStorage.setItem('vars_Cloud_Provider', providerName);
   };
 
 return (
@@ -108,12 +121,19 @@ return (
       <div className={`text-xs -translate-y-1 text-gray-700 isUnderstandableNudge ${isUnderstandableNudge ? ``: `invisible`}`}>
         * enhanced option, as it also provides the most secure storage of your data
       </div>
+      <div className="">
+        <button className="w-16 -translate-y-0.5"
+            onClick={handleNext}>
+            <div className="flex justify-center w-full">
+                <p className="text-xs text-gray-600">Next</p>
+            </div>
+            <BubbleMessage
+                show={showMessage}
+                message="Please select cloud provider before proceeding."
+            />
+        </button>
+      </div>
 
-      <div className="-translate-y-0.5">
-            <button className="w-16 -translate-y-0">
-                <h1 className="text-xs text-gray-600">Next</h1>
-            </button>
-        </div>
     </div>
   </Screen>
 );

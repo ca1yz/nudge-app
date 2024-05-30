@@ -1,9 +1,11 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { DeviceFrameset } from 'react-device-frameset';
 import 'react-device-frameset/styles/marvel-devices.min.css'
 
+import StarterPage from "./function_pages/starter";
 
-const Phone = ({ children }) => {
+const Phone = ({ children, start = StarterPage }) => {
     // phone frame settings
     const scale = 0.9;
     const width = 320;

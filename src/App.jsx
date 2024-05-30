@@ -6,8 +6,10 @@ import { DeviceFrameset } from 'react-device-frameset';
 import 'react-device-frameset/styles/marvel-devices.min.css'
 import CloudChoice from './components/cloud_provider/provider';
 import Phone from './components/phone';
-import FlipCard from './components/cookies/cookies_button';
 import CookiesPermission from './components/cookies/cookies_permission';
+import StarterPage from './components/function_pages/starter';
+import PhoneNav from './components/function_pages/phone_navigations';
+import Feedback from './components/function_pages/feedback';
 
 function App() {
 
@@ -19,7 +21,12 @@ function App() {
 
   return (
     <>
+    <h1 className='text-left'> A full pipeline </h1>
+    <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
+      <PhoneNav />
+    </div>
 
+    <h1 className='text-left'> Cookies </h1>
     <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
       <Phone>
         <CookiesPermission nudgeType={1} />
@@ -35,6 +42,7 @@ function App() {
       </Phone>
     </div>
 
+    <h1 className='text-left'> Permissions </h1>
     <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
       <Phone>
         <Permissions nudgeType={1} />
@@ -50,6 +58,7 @@ function App() {
       </Phone>
     </div>
 
+    <h1 className='text-left'> Location </h1>
     <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
       <Phone>
         <AllowLocation nudgeType={1} />
@@ -65,6 +74,7 @@ function App() {
       </Phone>
     </div>
 
+    <h1 className='text-left'> Cloud Provider </h1>
     <div className="flex flex-wrap justify-center items-stretch gap-5 mx-auto my-4">
       <Phone>
         <CloudChoice nudgeType={1}/>
