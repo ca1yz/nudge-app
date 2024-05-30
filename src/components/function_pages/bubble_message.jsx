@@ -14,7 +14,8 @@ const BubbleMessage = ({ message, show }) => {
       leaveTo="opacity-0"
       className="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-300 text-black text-sm rounded-lg px-4 py-2 shadow-lg z-50"
     >
-      {message}
+      <div className='w-48'>{message}</div>
+      
     </Transition>
   );
 };

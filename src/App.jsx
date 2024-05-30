@@ -2,7 +2,7 @@
 import './App.css'
 import Permissions from './components/permission/permission_screen';
 import AllowLocation from './components/location/allow_location';
-import { DeviceFrameset } from 'react-device-frameset';
+import React, { useEffect } from 'react';
 import 'react-device-frameset/styles/marvel-devices.min.css'
 import CloudChoice from './components/cloud_provider/provider';
 import Phone from './components/phone';
@@ -13,10 +13,20 @@ import Feedback from './components/function_pages/feedback';
 
 function App() {
 
-  // phone frame settings
-  const scale = 0.9;
-  const width = 320;
-  const height = 500;
+  // disable tab, space, and arrow keys
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Tab' || event.key === ' ' || event.key === 'ArrowUp' || event.key === 'ArrowDown' || event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
 
   return (

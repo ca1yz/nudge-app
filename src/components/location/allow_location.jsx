@@ -5,6 +5,15 @@ import map_img from "../../assets/1d77d8ec-bc4b-468c-9e24-1b840cccacef.jpg";
 import * as SolarIconSet from "solar-icon-set";
 import BubbleMessage from "../function_pages/bubble_message";
 
+const shuffleArray = (array) => {
+  let newArray = array.slice();
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+};
+
 const AllowLocation = ({ nudgeType, onNext }) => {
   const initialButtons = [
     { id: 'btn-while-using', text: 'While using' },
@@ -12,19 +21,16 @@ const AllowLocation = ({ nudgeType, onNext }) => {
     { id: 'btn-always', text: 'Always' }
   ];
 
+  // Shuffle the buttons before the component mounts
+  const ctrl = ControlType({ typeNumber: nudgeType });
+  let shuffledButtons = ctrl === 'no-nudge' ? shuffleArray(initialButtons) : initialButtons;
+  if (ctrl === 'visible-nudge' || ctrl === 'understandable-nudge') {
+    [shuffledButtons[0], shuffledButtons[1]] = [shuffledButtons[1], shuffledButtons[0]];
+  }
+
   const [selected, setSelected] = useState('');
   const [showMessage, setShowMessage] = useState(false);
-  const [buttons, setButtons] = useState(initialButtons);
-
-  useEffect(() => {
-    // Shuffle buttons only once when component mounts
-    const ctrl = ControlType({ typeNumber: nudgeType });
-    const shuffledButtons = ctrl === 'no-nudge' ? shuffleArray(initialButtons) : initialButtons;
-    if (ctrl === 'visible-nudge' || ctrl === 'understandable-nudge') {
-      [shuffledButtons[0], shuffledButtons[1]] = [shuffledButtons[1], shuffledButtons[0]];
-    }
-    setButtons(shuffledButtons);
-  }, [nudgeType]);
+  const [buttons, setButtons] = useState(shuffledButtons);
 
   const handleButtonClick = (buttonName) => {
     setSelected(buttonName);
@@ -40,22 +46,13 @@ const AllowLocation = ({ nudgeType, onNext }) => {
     }
   };
 
-  const shuffleArray = (array) => {
-    let newArray = array.slice();
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-    }
-    return newArray;
-  };
-
   const getButtonClassNames = (buttonText) => (
     `w-36 h-9 rounded text-gray-700 hover:bg-gray-300 ${
       selected === buttonText ? 'bg-gray-300' : 'bg-gray-200'
     }`
   );
 
-  const isUnderstandableNudge = ControlType({ typeNumber: nudgeType }) === 'understandable-nudge';
+  const isUnderstandableNudge = ctrl === 'understandable-nudge';
   const SafeIcon = () => <SolarIconSet.ShieldCheck color="#1c59c9" size={16} iconStyle="BoldDuotone" />;
 
   return (
@@ -95,17 +92,18 @@ const AllowLocation = ({ nudgeType, onNext }) => {
           </button>
         </div>
 
-        <div className="-translate-y-0.5">
-          <button className="w-16 -translate-y-0.5" onClick={handleNext}>
+        <div className="">
+        <button className="w-16 -translate-y-0.5"
+            onClick={handleNext}>
             <div className="flex justify-center w-full">
                 <p className="text-xs text-gray-600">Next</p>
             </div>
-          </button>
-          <BubbleMessage
-            show={showMessage}
-            message="Please select an option before proceeding."
-          />
-        </div>
+            <BubbleMessage
+                show={showMessage}
+                message="Please select your option before proceeding."
+            />
+        </button>
+      </div>
       </div>
     </Screen>
   );

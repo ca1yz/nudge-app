@@ -22,7 +22,7 @@ const Buffer = ({ title, text, onNext }) => {
                 <button className="w-16 -translate-y-0.5"
                     onClick={onNext}>
                     <div className="flex justify-center w-full">
-                        <p className="text-xs text-gray-600">Restart</p>
+                        <p className="text-xs text-gray-600">Next</p>
                     </div>
                 </button>
             </div>
