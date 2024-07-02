@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verification</title>
+</head>
+<body>
+  <div id="verification-container"></div>
+  <script>
+    // 读取 processed-index.html 的内容并插入到 verification-container 中
+    fetch('dist/processed-index.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('verification-container').innerHTML = html;
+
+        // 手动触发 React 的重新渲染
+        const script = document.querySelector('#verification-container script');
+        if (script) {
+          const newScript = document.createElement('script');
+          newScript.textContent = script.textContent;
+          document.body.appendChild(newScript);
+          document.body.removeChild(newScript);
+        }
+      })
+      .catch(error => console.error('Error loading HTML:', error));
+  </script>
+</body>
+</html>

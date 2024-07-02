@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BubbleMessage from '../function_pages/bubble_message';
 import Screen from '../screen';
-import { ControlType } from '../nudges';
+import { ControlType } from '../configs';
 import ProviderChoice from './provider_choice';
 import { ShieldCheckIcon } from '@heroicons/react/24/solid';
 import CloudServerImage from '../../assets/cloud-storage.png';

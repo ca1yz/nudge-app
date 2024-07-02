@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Screen from "../screen";
-import { ControlType } from "../nudges";
+import { ControlType } from "../configs";
 import map_img from "../../assets/1d77d8ec-bc4b-468c-9e24-1b840cccacef.jpg"
 import * as SolarIconSet from "solar-icon-set";
 import { ShieldCheckIcon } from '@heroicons/react/24/solid';

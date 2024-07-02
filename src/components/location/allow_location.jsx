@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Screen from "../screen";
-import { ControlType } from "../nudges";
+import { ControlType } from "../configs";
 import map_img from "../../assets/1d77d8ec-bc4b-468c-9e24-1b840cccacef.jpg";
 import * as SolarIconSet from "solar-icon-set";
 import BubbleMessage from "../function_pages/bubble_message";

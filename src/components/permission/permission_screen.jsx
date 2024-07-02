@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import ToggleSwitch from './toggle_switch';
 import RadioChoice from './radio_choice';
 import Screen from '../screen';
-import { ControlType } from '../nudges';
+import { ControlType } from '../configs';
 import * as SolarIconSet from "solar-icon-set";
 import BubbleMessage from '../function_pages/bubble_message';
 
