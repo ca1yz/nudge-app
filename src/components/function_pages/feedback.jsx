@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const { TextArea } = Input;
 
-const Feedback = ({ onNext }) => {
+const Feedback = ({ text, onNext }) => {
     const [value, setValue] = useState('');
 
     const handleNext = () => {
@@ -23,7 +23,7 @@ const Feedback = ({ onNext }) => {
                 </div>
                 <div>
                     <div className="pl-10 w-64 text-left text-sm">
-                        We would like your feedback:
+                        {text}
                     </div>  
 
                 </div>
@@ -46,7 +46,7 @@ const Feedback = ({ onNext }) => {
             <div className="">
                 <button className="w-16 -translate-y-0.5"
                  onClick={handleNext}>
-                    <h1 className="text-xs text-gray-600 text-center">Done</h1>
+                    <h1 className="text-xs text-gray-600 text-center">Send</h1>
                 </button>
             </div>
         </Screen>

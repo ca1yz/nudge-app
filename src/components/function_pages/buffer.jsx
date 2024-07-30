@@ -1,7 +1,7 @@
 import React from "react";
 import Screen from "../screen";
 
-const Buffer = ({ title, text, onNext }) => {
+const Buffer = ({ title, text, onNext, hideBtn }) => {
     return (
         <Screen>
             <div className="px-6 py-4 w-full">
@@ -19,12 +19,12 @@ const Buffer = ({ title, text, onNext }) => {
             </div>
 
             <div className="">
-                <button className="w-16 -translate-y-0.5"
+                {hideBtn !== true && (<button className="w-16 -translate-y-0.5"
                     onClick={onNext}>
                     <div className="flex justify-center w-full">
-                        <p className="text-xs text-gray-600">Next</p>
+                        <p className="text-xs text-gray-600">{`Next`}</p>
                     </div>
-                </button>
+                </button>)}
             </div>
         </Screen>
       );

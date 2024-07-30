@@ -1,31 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'antd';
 
+export const extractAndTransformLocalStorage = () => {
+  const data = [];
+
+  const isCapitalizedWord = (word) => /^[A-Z][a-z]*$/.test(word);
+
+  Object.keys(localStorage).forEach((key) => {
+    if (key.startsWith('vars_')) {
+      const newKey = key.replace('vars_', '').replace(/_/g, ' ');
+      const words = newKey.split(' ');
+
+      // Check if each word starts with a capital letter
+      if (words.every(isCapitalizedWord)) {
+        const formattedKey = newKey.replace(/\s+/g, ''); // Remove spaces
+        data.push({ key, name: formattedKey, value: localStorage.getItem(key) });
+      }
+    }
+  });
+  // Sort the data array before setting the state
+  data.sort((a, b) => a.name.localeCompare(b.name));
+
+  return data;
+};
+
 const PrintLocalStorage = ({ onNext }) => {
   const [transformedData, setTransformedData] = useState([]);
 
+  
   useEffect(() => {
-    const extractAndTransformLocalStorage = () => {
-      const data = [];
-
-      const isCapitalizedWord = (word) => /^[A-Z][a-z]*$/.test(word);
-
-      Object.keys(localStorage).forEach((key) => {
-        if (key.startsWith('vars_')) {
-          const newKey = key.replace('vars_', '').replace(/_/g, ' ');
-          const words = newKey.split(' ');
-
-          // Check if each word starts with a capital letter
-          if (words.every(isCapitalizedWord)) {
-            data.push({ key, name: newKey, value: localStorage.getItem(key) });
-          }
-        }
-      });
-      // Sort the data array before setting the state
-      data.sort((a, b) => a.name.localeCompare(b.name));
-      setTransformedData(data);
-    };
-
+    const data = extractAndTransformLocalStorage();
+    setTransformedData(data);
     extractAndTransformLocalStorage();
   }, []);
 
