@@ -1,42 +1,35 @@
 # NudgeApp
 
+## What is it?
 
-## Getting Started
+NudgeApp is a user interface (UI) designed for conducting experimental studies related to behavioral nudges in the fields of Human-Computer Interaction (HCI) and psychology. It provides a flexible platform to present different experimental conditions and collect data, facilitating research into how subtle design changes can influence user behavior.
 
-Please find `config.jsx` file under `NudgeApp/nudgeapp.client/`. Setting `isDemo` to `true`, the app can be run without a backend with randomized settings. `bufferPages` controls what text will be displayed.
+Try the UI online on [GitHub Pages](https://ca1yz.github.io/nudge-app/)!
 
-We need to specify the backend address `hostUrl`. Depends on if we want to redirect to other pages, set `surveyUrl` to a url or empty string.
+<div align="center">
+  <img src="./nudge-app-screenshot.jpeg" alt="Screenshot of NudgeApp" style="width:100%;">
+</div>
 
-In the backend, 2 dummy APIs are implemented. In `TokenInfoController.cs`, which allow us to access the app with pre-defined nudges, for example, `https://localhost:5173/?token=1ac2b`
-`https://localhost:5173/?token=2bd3c`
-`https://localhost:5173/?token=1ac2b`
-`https://localhost:5173/?token=2bd3c`
-`https://localhost:5173/?token=3ce4d`
-`https://localhost:5173/?token=4df5e`
-`https://localhost:5173/?token=5eg6f`
-`https://localhost:5173/?token=6fh7g`
-`https://localhost:5173/?token=7gi8h`.
-In the end, the data will be posted to `SubmissionController.cs` and simply stored in `submission.json`.
+## Installation
 
+Now this repo contains frontend only. Run the installation commands to test it out!
 
-## Frontend
+<!-- To get the NudgeApp running, you will typically need a backend service that the UI can communicate with. However, the application includes a demo mode for frontend-only development or testing.
+
+*   **Backend Dependency:** The application is designed to interact with a backend. Ensure your backend service is running and accessible. The target URL for the backend is configured in `vite.config.js`.
+*   **Demo Mode:** You can run the app without a backend by setting `isDemo` to `true` in the `config.jsx` file located in the project root. In demo mode, the app uses randomized settings and does not require a backend connection.
+*   **Content Buffering:** The `bufferPages` setting in `config.jsx` controls the text content displayed in the application. You can adjust this to manage the flow and content of your experiments. -->
 
 ### Prerequisites
 
-- Node.js
-- npm (or yarn)
+*   Node.js (version 18)
+*   npm (Node Package Manager, which comes with Node.js)
 
-### Installation
-
-1. Clone the repository:
-    ```bash
-    git clone this_repo
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd nudge-app
-    npm install
-    ```
+```bash
+git https://github.com/ca1yz/nudge-app.git
+cd nudge-app
+npm install
+```
 
 ### Running the Application
 
@@ -45,3 +38,5 @@ To run the application, use the following command:
 ```bash
 npm run dev
 ```
+
+Now you should find the UI at `http://localhost:5173/`
