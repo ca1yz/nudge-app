@@ -39,4 +39,4 @@ To run the application, use the following command:
 npm run dev
 ```
 
-Now you should find the UI at `http://localhost:5173/`
+Now you should find the UI by visiting `http://localhost:5173/` in the browser.
